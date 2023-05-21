@@ -3,6 +3,7 @@ import App from './App';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import DetailPage from './pages/DetailPage';
+import PostPage from './pages/PostPage';
 
 export const router = createBrowserRouter([
   {
@@ -15,7 +16,11 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/post/:postId',
+        path: '/posts',
+        element: <PostPage />,
+      },
+      {
+        path: '/posts/:postId',
         element: <DetailPage />,
       },
     ],
