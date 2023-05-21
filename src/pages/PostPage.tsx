@@ -15,6 +15,20 @@ export default function PostPage() {
     });
   };
 
+  // useEffect(() => {
+  //   db.collection('post')
+  //     .add({
+  //       title: '',
+  //       content: '',
+  //     })
+  //     .then((docRef) => {
+  //       console.log('Document written with ID: ', docRef.id);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error adding document: ', error);
+  //     });
+  // }, []);
+
   // const handleSubmit = (e) => {
   //   e.preventDefault();
   //   createArticleApi(inputs).then((res: any) => {
