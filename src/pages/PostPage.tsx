@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { createArticleApi } from '../api/Api';
+import React, { FormEventHandler, useState } from 'react';
+import { db } from '../firebase';
 
 export default function PostPage() {
   const [inputs, setInputs] = useState({
@@ -29,18 +29,27 @@ export default function PostPage() {
   //     });
   // }, []);
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   createArticleApi(inputs).then((res: any) => {
-  //     getArticleApi().then((res: any) => {
-  //       setServerData(res.data);
-  //     });
-  //   });
-  // };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    db.collection('post')
+      .add({ title: inputs.title, content: inputs.content })
+      .then((docRef) => {
+        console.log('Document written with ID: ', docRef.id);
+      })
+      .catch((error) => {
+        console.error('Error adding document: ', error);
+      });
+
+    setInputs({
+      title: '',
+      content: '',
+    });
+  };
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="title"
