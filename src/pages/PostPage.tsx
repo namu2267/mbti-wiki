@@ -18,27 +18,13 @@ export default function PostPage() {
     });
   };
 
-  // useEffect(() => {
-  //   db.collection('post')
-  //     .add({
-  //       title: '',
-  //       content: '',
-  //     })
-  //     .then((docRef) => {
-  //       console.log('Document written with ID: ', docRef.id);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error adding document: ', error);
-  //     });
-  // }, []);
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (inputs.title.trim().length === 0) {
-      return;
-    }
-    if (inputs.content.trim().length === 0) {
-      return;
+    if (
+      inputs.title.trim().length === 0 ||
+      inputs.content.trim().length === 0
+    ) {
+      return; // 입력값이 비어있을 경우 제출 방지
     }
 
     db.collection('post')
@@ -52,11 +38,6 @@ export default function PostPage() {
       .catch((error) => {
         console.error('Error adding document: ', error);
       });
-
-    // setInputs({
-    //   title: '',
-    //   content: '',
-    // });
   };
 
   return (
