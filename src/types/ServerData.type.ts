@@ -1,5 +1,5 @@
 export interface ServerDataType {
   title: string;
   content: string;
-  id: number;
+  id: string;
 }

@@ -1,7 +1,10 @@
-import React, { FormEventHandler, useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { db } from '../firebase';
 
 export default function PostPage() {
+  const navigate = useNavigate();
+
   const [inputs, setInputs] = useState({
     title: '',
     content: '',
@@ -31,20 +34,29 @@ export default function PostPage() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (inputs.title.trim().length === 0) {
+      return;
+    }
+    if (inputs.content.trim().length === 0) {
+      return;
+    }
 
     db.collection('post')
       .add({ title: inputs.title, content: inputs.content })
+
       .then((docRef) => {
         console.log('Document written with ID: ', docRef.id);
+        navigate('/');
       })
+
       .catch((error) => {
         console.error('Error adding document: ', error);
       });
 
-    setInputs({
-      title: '',
-      content: '',
-    });
+    // setInputs({
+    //   title: '',
+    //   content: '',
+    // });
   };
 
   return (

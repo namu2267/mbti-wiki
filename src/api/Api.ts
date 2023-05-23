@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ArticleTypes } from '../types/ArticleTypes';
+import { ArticleTypes } from '../types/Article.type';
 
 // article 데이터를 받아옴
 // export const getArticleApi = () => {

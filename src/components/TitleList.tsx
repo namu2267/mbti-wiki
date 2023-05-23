@@ -1,7 +1,7 @@
 import { Pagination } from 'antd';
 import { useState } from 'react';
 import Title from './Title';
-import { ServerDataType } from '../types/ServerDataType';
+import { ServerDataType } from '../types/ServerData.type';
 
 export default function TitleList({
   serverData,
@@ -16,6 +16,8 @@ export default function TitleList({
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
   const currentPageItems = serverData.slice(startIndex, endIndex);
+
+  console.log('serverData====>', serverData);
 
   return (
     <>
