@@ -4,6 +4,7 @@ import { db } from '../firebase';
 
 export default function PostPage() {
   const navigate = useNavigate();
+  const timestamp = new Date();
 
   const [inputs, setInputs] = useState({
     title: '',
@@ -28,7 +29,7 @@ export default function PostPage() {
     }
 
     db.collection('post')
-      .add({ title: inputs.title, content: inputs.content })
+      .add({ title: inputs.title, content: inputs.content, timestamp })
 
       .then((docRef) => {
         console.log('Document written with ID: ', docRef.id);

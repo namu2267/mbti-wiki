@@ -7,22 +7,13 @@ import { ServerDataType } from '../types/ServerData.type';
 export default function Home() {
   const [serverData, setServerData] = useState<ServerDataType[]>([]);
 
-  // useEffect(() => {
-  //   db.collection('post')
-  //     .get()
-  //     .then((querySnapshot) => {
-  //       const data: ServerDataType[] = [];
-  //       querySnapshot.forEach((doc) => {
-  //         data.push(doc.data() as ServerDataType);
-  //       });
-  //       setServerData(data);
-  //     });
-  // }, []);
-
   useEffect(() => {
     db.collection('post')
+      .orderBy('timestamp', 'desc')
       .get()
       .then((querySnapshot) => {
+        console.log('재렌더링');
+        const list: ServerDataType[] = [];
         querySnapshot.forEach((doc) => {
           const { title, content } = doc.data();
           const { id } = doc;
@@ -31,8 +22,11 @@ export default function Home() {
             content,
             id,
           };
-          setServerData((prev) => [...prev, serverData]);
+          // setServerData((prev) => [...prev, serverData]);
+
+          list.push(serverData);
         });
+        setServerData(list);
       });
   }, []);
 
@@ -61,8 +55,3 @@ export default function Home() {
     </div>
   );
 }
-
-// 질문1. 위의 타입에러 코드 해석.
-// 질문2. 디테일페이지의 id를 위와같은 식으로 불러와도 보안상 괜찮은지? 보통 이런식으로도 만드는지?
-// 질문3. console창을 통해서 보면 처음에 빈배열이 하나 들어온다. 이유는?
-// 질문4. 데이터가 2번뜨는 문제가 발생중. 해결법 찾는중.
