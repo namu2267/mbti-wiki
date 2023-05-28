@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import DetailPage from './pages/DetailPage';
 import PostPage from './pages/PostPage';
+import MbtiPage from './pages/MbtiPage';
+import MbtiDetailPage from './pages/MbtiDetailPage';
 
 export const router = createBrowserRouter([
   {
@@ -12,7 +14,7 @@ export const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       {
-        path: '/',
+        path: '/free',
         element: <Home />,
       },
       {
@@ -22,6 +24,14 @@ export const router = createBrowserRouter([
       {
         path: '/posts/:id',
         element: <DetailPage />,
+      },
+      {
+        path: '/',
+        element: <MbtiPage />,
+      },
+      {
+        path: '/mbti/:personality',
+        element: <MbtiDetailPage />,
       },
     ],
   },

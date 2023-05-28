@@ -30,20 +30,6 @@ export default function Home() {
       });
   }, []);
 
-  // 타입에러 발생.
-  // 의도: doc안에 있는 id와 data를 모두 이용하고 싶다!
-  // 궁금증: 발생한 타입에러 코드를 어떻게 해석해야 하는지? 어떻게 읽어야하는지가 알고싶다.
-  // useEffect(() => {
-  //   db.collection('post')
-  //     .get()
-  //     .then((querySnapshot) => {
-  //       querySnapshot.forEach((doc) => {
-  //         const { data, id } = doc;
-  //         setServerData((prev) => [...prev, { data, id }]);
-  //       });
-  //     });
-  // }, []);
-
   return (
     <div>
       <p>홈입니당.</p>
