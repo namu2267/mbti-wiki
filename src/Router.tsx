@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
         element: <MbtiPage />,
       },
       {
-        path: '/mbti/:personality',
+        path: '/mbti/:id',
         element: <MbtiDetailPage />,
       },
     ],

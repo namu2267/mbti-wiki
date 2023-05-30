@@ -1,0 +1,16 @@
+.mbtiCardContainer {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px;
+
+  .mbtiCard {
+    display: flex;
+    flex-direction: column;
+
+    .mbtiCardFlex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  }
+}
