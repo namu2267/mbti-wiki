@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
-import Home from './pages/Home';
+import Home from './pages/Freeboard';
 import NotFound from './pages/NotFound';
 import DetailPage from './pages/DetailPage';
 import PostPage from './pages/PostPage';

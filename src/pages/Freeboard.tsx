@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import PostPage from './PostPage';
+import { Link } from 'react-router-dom';
 import TitleList from '../components/TitleList';
 import { db } from '../firebase';
 import { ServerDataType } from '../types/ServerData.type';
@@ -32,7 +32,10 @@ export default function Home() {
 
   return (
     <div>
-      <p>홈입니당.</p>
+      <p>게시판 페이지로 변경.</p>
+
+      <Link to="/posts"> 글쓰기 </Link>
+
       {serverData ? (
         <TitleList serverData={serverData} />
       ) : (
